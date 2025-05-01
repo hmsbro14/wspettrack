@@ -1,4 +1,3 @@
-// src/services/uploadToImgur.js
 import axios from 'axios';
 
 const IMGUR_CLIENT_ID = 'e4abbe89e1586ce';
@@ -8,7 +7,7 @@ export async function uploadToImgur(base64Image) {
     const res = await axios.post(
       'https://api.imgur.com/3/image',
       {
-        image: base64Image.split(',')[1], // remove "data:image..." part
+        image: base64Image.split(',')[1],
         type: 'base64',
       },
       {
@@ -18,7 +17,7 @@ export async function uploadToImgur(base64Image) {
       }
     );
 
-    return res.data.data.link; // this is the public Imgur URL
+    return res.data.data.link;
   } catch (err) {
     console.error('Imgur upload failed:', err);
     return null;
